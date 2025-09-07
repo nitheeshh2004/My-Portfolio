@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nitheesh Kumar K — Portfolio</title>
+  <meta name="description" content="Portfolio of Nitheesh Kumar K — Mechanical Engineering student showcasing skills in Python, Java, HTML, CSS, data tools, and internships at IBM, NLC India, and PyeongHwa Automotives." />
+  <style>
+    :root{
+      --bg:#1f2543;           /* deep navy */
+      --panel:#394dc1;        /* card */
+      --ink:#e6e8ff;          /* text */
+      --muted:#afb2d6;        /* secondary */
+      --brand:#3a8aec;        /* primary */
+      --accent:#66d3e3;       /* accent */
+      --ring: rgba(87, 137, 202, 0.45);
+      --shadow: 0 10px 30px rgba(51, 64, 126, 0.25);
+      --radius: 36px;
+    }
+
+    *{box-sizing:content-box}
+    html{scroll-behavior: smooth();}
+    body{
+      margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, #0b0e1a 100%);
+      color:var(--ink);
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* --- Top Nav --- */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background: rgba(10,14,32,.6);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      max-width:1100px; margin:auto; padding:14px 20px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{font-weight:800; letter-spacing:.3px}
+    .brand small{font-weight:600; color:var(--muted)}
+    .nav a{padding:8px 12px; border-radius:10px}
+    .nav a:hover{background:rgba(96,165,250,.12)}
+    .nav-links{display:flex; gap:6px; flex-wrap:wrap}
+
+    /* --- Sections --- */
+    section{padding:64px 20px}
+    .wrap{max-width:1100px; margin:auto}
+    .title{font-size:clamp(22px, 3vw, 30px); margin:0 0 18px; letter-spacing:.2px}
+    .lead{color:var(--muted)}
+
+    /* --- Hero --- */
+    .hero{padding:86px 20px 56px}
+    .hero .card{
+      background: radial-gradient(1200px 500px at 10% -10%, rgba(34,211,238,.2), transparent 60%),
+                  radial-gradient(1200px 500px at 90% -10%, rgba(96,165,250,.2), transparent 60%),
+                  var(--panel);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      padding:32px; display:grid; gap:18px; align-items:center;
+.hero .card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Avatar image */
+.avatar{
+  width: 140px;               /* visible size */
+  height: 140px;              /* visible size */
+  border-radius: 50%;         /* circular */
+  object-fit: cover;          /* keep aspect and crop if needed */
+  border: 3px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.45);
+  display: block;
+}
+
+/* On small screens stack vertically */
+@media (max-width: 900px){
+  .hero .card {
+    grid-template-columns: 1fr;    /* stack content */
+    text-align: center;
+  }
+  .avatar{ margin: 0 auto 8px; }  /* center avatar */
+}
+
+    }
+    .hero h1{font-size: clamp(28px, 5vw, 46px); margin:0}
+    .hero .tag{display:inline-block; padding:6px 10px; border:1px solid rgba(255,255,255,.1); border-radius:999px; color:var(--muted)}
+    .hero .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px}
+    .btn{display:inline-block; padding:12px 16px; border-radius:12px; font-weight:700; letter-spacing:.2px; border:1px solid rgba(255,255,255,.12)}
+    .btn.primary{background:linear-gradient(90deg, var(--brand), var(--accent)); color:#081021; border:none}
+    .btn.ghost{background:linear-gradient(90deg, var(--brand), var(--accent)); color:#081021; border:none}
+
+    /* --- Grid helpers --- */
+    .grid{display:grid; gap:18px}
+    .g-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .g-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width: 900px){ .g-2,.g-3{grid-template-columns:1fr} }
+
+    /* --- Cards --- */
+    .card{background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:20px}
+    .card h3{margin:0 0 6px}
+    .meta{color:var(--muted); font-size:.95rem}
+    .pill{display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(96,165,250,.15); border:1px solid rgba(96,165,250,.25); margin:4px 6px 0 0}
+    .list{margin:10px 0 0 20px}
+    .list li{margin:6px 0}
+
+    /* --- Timeline --- */
+    .timeline{position:relative}
+    .timeline:before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:rgba(96,165,250,.25)}
+    .t-item{position:relative; padding-left:28px; margin:14px 0}
+    .t-item:before{content:""; position:absolute; left:4px; top:8px; width:12px; height:12px; border-radius:50%; background:linear-gradient(90deg, var(--brand), var(--accent)); box-shadow:0 0 0 3px rgba(96,165,250,.2)}
+
+    /* --- Footer --- */
+    footer{padding:36px 20px; color:var(--muted); border-top:1px solid rgba(255,255,255,.08)}
+
+    /* --- Utility --- */
+    .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner wrap">
+      <div class="brand">Nitheesh Kumar <small>Portfolio</small></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certs">Certifications</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="card">
+        <span class="tag">Mechanical Engineering • 2022–2026</span>
+        <img
+          class="avatar"
+          src="C:\Users\nithe\OneDrive\Desktop\portfolio\profile-400.jpg"
+          alt="Nitheesh kumar - Profile photo "
+          width="160"
+          height="160"
+          loading="lazy"
+          
+        />
+        <h1>Hi, I'm <strong>Nitheesh Kumar K</strong>.</h1>
+        <p class="lead">Aspiring software professional with a foundation in <strong>Python</strong>, <strong>Java</strong>, <strong>HTML</strong>, <strong>CSS</strong>, and data tools. Hands-on exposure through internships at <strong>IBM</strong> and <strong>NLC India Ltd</strong>.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap grid g-2">
+      <div class="card">
+        <h2 class="title">About Me</h2>
+        <p class="lead">I'm pursuing a B.E in Mechanical Engineering at <strong>Krishnasamy College of Engineering and Technology (KCET)</strong>. I enjoy building clean, user-friendly pages and learning how AI and data tools can improve real-world systems.</p>
+        <ul class="list">
+          <li>CGPA: <strong>7.75</strong></li>
+          <li>Strengths: Rapport building, stakeholder & people management, clear communication</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="title">Quick Links</h2>
+        <p class="lead">Profiles & contact to reach me fast</p>
+        <p><a class="pill" href="mailto:nitheeshh2004@gmail.com">✉️ Email</a> <a class="pill" href="tel:+919943696035">📞 Call</a></p>
+        <p><a class="pill" href="https://www.linkedin.com/in/nitheesh-kumar-23ni04he" target="_blank" rel="noreferrer noopener">in/ LinkedIn</a>
+           <a class="pill" href="https://github.com/nitheeshh2004" target="_blank" rel="noreferrer noopener">GitHub</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <h2 class="title">Education</h2>
+      <div class="grid g-3">
+        <div class="card">
+          <h3>Krishnasamy College Of Engineering & Technology — B.E (Mechanical)</h3>
+          <div class="meta">Tamil Nadu, India • Nov 2022 – May 2026</div>
+          <ul class="list">
+            <li>CGPA: <strong>7.75</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Isha Vidhya Matriculation Hr. Sec. School — HSC</h3>
+          <div class="meta">Tamil Nadu, India • May 2022</div>
+          <ul class="list"><li>Percentage: <strong>73%</strong></li></ul>
+        </div>
+        <div class="card">
+          <h3>Anandhan Memo Matriculation Hr. Sec. School — SSLC</h3>
+          <div class="meta">Tamil Nadu, India • May 2020</div>
+          <ul class="list"><li>Percentage: <strong>95%</strong></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <h2 class="title">Skills</h2>
+      <div class="card">
+        <p class="lead">Technical</p>
+        <p>
+          <span class="pill">Python</span>
+          <span class="pill">Java</span>
+          <span class="pill">HTML</span>
+          <span class="pill">CSS</span>
+          <span class="pill">MySQL</span>
+          <span class="pill">Tableau</span>
+          <span class="pill">Excel</span>
+          <span class="pill">PowerPoint</span>
+        </p>
+        <p class="lead" style="margin-top:10px">Platforms</p>
+        <p>
+          <span class="pill">Jupyter Notebook</span>
+          <span class="pill">Visual Studio Code</span>
+        </p>
+        <p class="lead" style="margin-top:10px">Soft Skills</p>
+        <p>
+          <span class="pill">Rapport Building</span>
+          <span class="pill">Stakeholder Management</span>
+          <span class="pill">People Management</span>
+          <span class="pill">Communication</span>
+          <span class="pill">Psychological Thinking and Decision Making</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <h2 class="title">Experience & Internships</h2>
+      <div class="card timeline">
+        <div class="t-item">
+          <h3>IBM — Virtual Intern (AI & Cloud)</h3>
+          <div class="meta">Jul 2025</div>
+          <ul class="list">
+            <li>Hands-on projects and masterclasses via IBM SkillsBuild.</li>
+            <li>Presented a final project integrating AI/Cloud, evaluated by industry experts.</li>
+            <li>Strengthened remote collaboration and problem‑solving.</li>
+          </ul>
+        </div>
+        <div class="t-item">
+          <h3>NLC India Ltd — Internship</h3>
+          <div class="meta">Jul 2025 • SME Maintenance Department, Neyveli</div>
+          <ul class="list">
+            <li>Exposure to maintenance and operations of heavy machinery and equipment.</li>
+          </ul>
+        </div>
+        <div class="t-item">
+          <h3>PyeongHwa Automotives India (P) Ltd — Student Trainee</h3>
+          <div class="meta">Feb 2024</div>
+          <ul class="list">
+            <li>1‑week training in automotive manufacturing.</li>
+            <li>Hands‑on welding & assembling; learned industry best practices.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <h2 class="title">Projects</h2>
+      <div class="grid g-2">
+        <article class="card">
+          <h3>Predictive Maintenance of Industrial Machinery (AI & ML)</h3>
+          <div class="meta">Jul 2025 – Aug 2025</div>
+          <ul class="list">
+            <li>Built ML model on sensor streams (temperature, vibration, power) to predict failures.</li>
+            <li>Achieved <strong>99.5% accuracy</strong>; deployed with <strong>IBM Watsonx.ai</strong> for proactive maintenance.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Portfolio Website (This Site)</h3>
+          <div class="meta">HTML + CSS</div>
+          <ul class="list">
+            <li>Responsive, accessible layout with semantic sections.</li>
+            <li>Built without JavaScript; fast and recruiter‑friendly.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="wrap">
+      <h2 class="title">Certifications</h2>
+      <div class="grid g-2">
+        <div class="card">
+          <ul class="list">
+            <li>The Java Language — Coursera (Aug 2025)</li>
+            <li>Artificial Intelligence — Accenture (Jul 2025)</li>
+            <li>Retrieval Augmented Generation with LangChain — IBM (Jun 2025)</li>
+            <li>Google Project Management — Google (Jul 2023)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="wrap">
+      <h2 class="title">Achievements</h2>
+      <div class="grid g-2">
+        <div class="card">
+          <ul class="list">
+            <li>Overall Best Achiever of the Year 2024–25 — KCET (Apr 2025)</li>
+            <li>1st Prize, National Conference on Engineering Innovations — KCET (Apr 2025)</li>
+            <li>Won 1st Prize — Inter‑Collegiate Debate Competition — KCET (Nov 2023)</li>
+            <li>Finalist — Quiz Competition — Rotary Club of Tiruchirappalli (Oct 2023)</li>
+            <li>Participant — TechXplore’25 National Project Contest — Mailam Engineering College (Mar 2025)</li>
+            <li>Participant — GenNextVision’2025 Innovation Fest — IFET College of Engineering (Mar 2025)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap grid g-2">
+      <div class="card">
+        <h2 class="title">Contact</h2>
+        <p class="lead">Feel free to reach out for opportunities, collaboration, or feedback.</p>
+        <p>Email: <a href="mailto:nitheeshh2004@gmail.com">nitheeshh2004@gmail.com</a></p>
+        <p>Phone: <a href="tel:+919943696035">+91 99436 96035</a></p>
+        <p>LinkedIn: <a target="_blank" rel="noreferrer noopener" href="https://www.linkedin.com/in/nitheesh-kumar-23ni04he">linkedin.com/in/nitheesh-kumar-23ni04he</a></p>
+        <p>GitHub: <a target="_blank" rel="noreferrer noopener" href="https://github.com/nitheeshh2004">github.com/nitheeshh2004</a></p>
+      </div>
+      <div class="card" aria-hidden="true">
+        <h2 class="title">Fast facts</h2>
+        <p class="lead">Location: Tamil Nadu, India</p>
+        <p class="lead">Open to: Internships & Entry‑level roles</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">© 2025 Nitheesh Kumar K</div>
+  </footer>
+</body>
+</html>
+
